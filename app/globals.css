@@ -1,0 +1,11 @@
+@tailwind base; @tailwind components; @tailwind utilities;
+body{@apply bg-slate-50 text-slate-800 antialiased}
+@layer components{
+ .card{@apply bg-white rounded-2xl border border-slate-200/70 shadow-sm p-5}
+ .btn{@apply inline-flex items-center justify-center gap-2 rounded-xl bg-indigo-600 px-4 py-2.5 text-sm font-semibold text-white shadow-lg shadow-indigo-600/25 transition hover:bg-indigo-700 active:scale-95}
+ .btn2{@apply inline-flex items-center justify-center gap-2 rounded-xl border border-slate-200 bg-white px-4 py-2.5 text-sm font-semibold text-slate-700 transition hover:bg-slate-50 active:scale-95}
+ .chip{@apply rounded-full px-3 py-1 text-xs font-medium}
+}
+@keyframes pop{from{opacity:0;transform:translateY(12px) scale(.97)}to{opacity:1;transform:none}}
+.pop{animation:pop .45s ease both}
+@media print{aside,header,.noprint{display:none!important}}

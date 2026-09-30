@@ -1,0 +1,20 @@
+"use client";
+import { useState } from "react"; import { Sparkles, Star, Briefcase, CalendarCheck, CheckCircle2, XCircle, Loader2, UserCheck } from "lucide-react"; import { Title } from "@/components/Shell"; import { required, trainers } from "@/lib/data";
+export default function Matching() {
+  const [state, setState] = useState<"idle" | "loading" | "done">("idle"); const [assigned, setAssigned] = useState<string | null>(null);
+  const find = () => { setState("loading"); setTimeout(() => setState("done"), 1200); };
+  return (<><Title t="Competency matching" s="Match course requirements with the best available trainers." />
+    <div className="card pop relative overflow-hidden !border-0 bg-gradient-to-br from-indigo-700 to-blue-500 text-white">
+      <div className="flex flex-col justify-between gap-6 md:flex-row md:items-center"><div><p className="text-sm text-indigo-100">Course</p><h2 className="text-2xl font-extrabold">Advanced Python for Data Analytics</h2>
+        <div className="mt-4 flex flex-wrap gap-2">{Object.entries(required).map(([s, l]) => <span key={s} className="chip bg-white/20 text-sm backdrop-blur">{s} <b>· L{l}</b></span>)}</div></div>
+        <button className="btn !bg-white !text-indigo-700" onClick={find} disabled={state === "loading"}>{state === "loading" ? <Loader2 className="animate-spin" size={16} /> : <Sparkles size={16} />}Find Best Trainers</button></div></div>
+    {state === "loading" && <p className="mt-8 text-center text-slate-500">Analysing 240 trainer profiles…</p>}
+    {state === "done" && <div className="mt-6 grid gap-5 md:grid-cols-2 xl:grid-cols-3">{trainers.map((t, i) => { const ok = Object.keys(required).filter(s => (t.skills[s] ?? 0) >= required[s]); const miss = Object.keys(required).filter(s => !ok.includes(s)); const on = assigned === t.name;
+      return (<div key={t.name} className={`card pop transition hover:-translate-y-1 hover:shadow-xl ${on ? "ring-2 ring-emerald-500" : ""}`} style={{ animationDelay: i * 100 + "ms" }}>
+        <div className="flex items-start justify-between"><div className="flex items-center gap-3"><div className="grid h-12 w-12 place-items-center rounded-2xl bg-gradient-to-br from-indigo-500 to-blue-400 font-bold text-white">{t.name.split(" ").pop()![0]}</div><div><h3 className="font-bold leading-tight">{t.name}</h3><p className="text-xs text-slate-500">{t.role}</p></div></div>
+          <span className={`chip text-sm font-bold ${t.match > 85 ? "bg-emerald-50 text-emerald-700" : "bg-indigo-50 text-indigo-700"}`}>{t.match}% Match</span></div>
+        <div className="mt-4"><div className="mb-1 flex justify-between text-xs text-slate-500"><span>Skill match</span><span>{t.match}%</span></div><div className="h-2 rounded-full bg-slate-100"><div className="h-full rounded-full bg-gradient-to-r from-indigo-500 to-emerald-400 transition-all duration-1000" style={{ width: t.match + "%" }} /></div></div>
+        <div className="mt-4 grid grid-cols-3 gap-2 text-center text-xs"><div className="rounded-xl bg-slate-50 p-2"><Briefcase size={14} className="mx-auto mb-1 text-indigo-600" />{t.exp} yrs</div><div className="rounded-xl bg-slate-50 p-2"><Star size={14} className="mx-auto mb-1 text-amber-500" />{t.rating}</div><div className="rounded-xl bg-slate-50 p-2"><CalendarCheck size={14} className="mx-auto mb-1 text-emerald-600" />{t.avail}</div></div>
+        <div className="mt-4 flex flex-wrap gap-1.5">{ok.map(s => <span key={s} className="chip flex items-center gap-1 bg-emerald-50 text-emerald-700"><CheckCircle2 size={12} />{s}</span>)}{miss.map(s => <span key={s} className="chip flex items-center gap-1 bg-rose-50 text-rose-600"><XCircle size={12} />{s}</span>)}</div>
+        {on ? <p className="pop mt-5 flex items-center justify-center gap-2 rounded-xl bg-emerald-50 py-2.5 text-sm font-bold text-emerald-700"><UserCheck size={16} />✓ Trainer Assigned Successfully</p> : <button className="btn mt-5 w-full" onClick={() => setAssigned(t.name)}>Assign Trainer</button>}</div>); })}</div>}</>);
+}
