@@ -10,5 +10,10 @@ export default function Landing() {
       <div className="mt-20 grid gap-5 md:grid-cols-3">{cards.map(([I, t, d], i) => (
         <div key={t} className="pop rounded-3xl border border-white/20 bg-white/10 p-7 text-left backdrop-blur transition hover:-translate-y-2 hover:bg-white/20" style={{ animationDelay: i * 120 + "ms" }}>
           <div className="mb-4 grid h-12 w-12 place-items-center rounded-2xl bg-white text-indigo-700"><I /></div><h3 className="text-xl font-bold">{t}</h3><p className="mt-2 text-indigo-100">{d}</p></div>))}</div>
-    </section></div>);
+    </section><footer className="border-t border-white/15 bg-indigo-950/40">
+      <div className="mx-auto grid max-w-6xl gap-8 px-6 py-12 md:grid-cols-3">
+        <div><b className="text-lg">CAPACITY CONNECT</b><p className="mt-2 text-sm text-indigo-200">Connect. Learn. Build Capacity.</p><Link href="/support" className="btn mt-4 !bg-white !text-indigo-700 !shadow-none"><LifeBuoy size={16} />Visit support centre</Link></div>
+        <div className="space-y-3 text-sm"><h4 className="font-bold">Contact us</h4><a href="mailto:support@capacityconnect.in" className="flex items-center gap-2 text-indigo-100 hover:text-white"><Mail size={16} />support@capacityconnect.in</a><a href="tel:+911800123456" className="flex items-center gap-2 text-indigo-100 hover:text-white"><Phone size={16} />1800-123-456 (toll free)</a><p className="flex items-center gap-2 text-indigo-100"><Clock size={16} />Mon to Sat, 9 AM to 6 PM IST</p></div>
+        <div className="space-y-2 text-sm"><h4 className="font-bold">Quick links</h4><Link href="/login" className="block text-indigo-100 hover:text-white">Login</Link><Link href="/courses" className="block text-indigo-100 hover:text-white">Courses</Link><Link href="/support" className="block text-indigo-100 hover:text-white">Help and FAQs</Link></div>
+      </div></footer></div>);
 }
