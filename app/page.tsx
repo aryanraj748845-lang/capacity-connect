@@ -1,4 +1,4 @@
-import Link from "next/link"; import { BookOpen, Presentation, Network, ArrowRight } from "lucide-react";
+import Link from "next/link"; import { BookOpen, Presentation, Network, ArrowRight, Mail, Phone, Clock, LifeBuoy } from "lucide-react";
 const cards = [[BookOpen, "LEARN", "Personalised courses, assessments and verified certificates."], [Presentation, "TEACH", "Trainers publish courses and track learner growth."], [Network, "CONNECT", "AI competency matching pairs skill gaps with the best trainers."]] as const;
 export default function Landing() {
   return (<div className="min-h-screen bg-gradient-to-br from-indigo-950 via-indigo-800 to-blue-600 text-white">
