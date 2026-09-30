@@ -4,7 +4,6 @@ export default function Landing() {
   return (<div className="min-h-screen bg-gradient-to-br from-indigo-950 via-indigo-800 to-blue-600 text-white">
     <nav className="mx-auto flex max-w-6xl items-center justify-between p-6"><b className="text-lg tracking-wide">CAPACITY CONNECT</b><Link href="/login" className="rounded-xl bg-white/15 px-4 py-2 text-sm font-semibold backdrop-blur hover:bg-white/25">Login</Link></nav>
     <section className="mx-auto max-w-6xl px-6 pb-24 pt-16 text-center">
-      <span className="chip bg-white/15">Smart India Hackathon</span>
       <h1 className="pop mt-6 text-5xl font-extrabold tracking-tight md:text-7xl">CAPACITY CONNECT</h1>
       <p className="pop mt-4 text-xl text-indigo-100 md:text-2xl">Connect. Learn. Build Capacity.</p>
       <div className="mt-8 flex justify-center gap-3"><Link href="/dashboard" className="btn bg-white !text-indigo-700 hover:!bg-indigo-50">Explore dashboard <ArrowRight size={16} /></Link><Link href="/matching" className="btn2 !border-white/30 !bg-white/10 !text-white hover:!bg-white/20">Try competency matching</Link></div>
