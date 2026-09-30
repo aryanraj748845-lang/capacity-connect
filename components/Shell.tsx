@@ -1,7 +1,7 @@
 "use client";
 import Link from "next/link"; import { usePathname } from "next/navigation"; import { useState } from "react";
-import { LayoutDashboard, BookOpen, ClipboardCheck, Award, GraduationCap, ShieldCheck, Sparkles, BarChart3, Menu, X, LogOut, Network } from "lucide-react";
-const nav = [["Dashboard", "/dashboard", LayoutDashboard], ["Courses", "/courses", BookOpen], ["Assessment", "/assessment", ClipboardCheck], ["Certificates", "/certificates", Award], ["Trainer", "/trainer", GraduationCap], ["Admin", "/admin", ShieldCheck], ["Competency Matching", "/matching", Sparkles], ["Analytics", "/analytics", BarChart3]] as const;
+import { LayoutDashboard, BookOpen, ClipboardCheck, Award, GraduationCap, ShieldCheck, Sparkles, BarChart3, Menu, X, LogOut, Network, LifeBuoy } from "lucide-react";
+const nav = [["Dashboard", "/dashboard", LayoutDashboard], ["Courses", "/courses", BookOpen], ["Assessment", "/assessment", ClipboardCheck], ["Certificates", "/certificates", Award], ["Trainer", "/trainer", GraduationCap], ["Admin", "/admin", ShieldCheck], ["Competency Matching", "/matching", Sparkles], ["Analytics", "/analytics", BarChart3], ["Support", "/support", LifeBuoy]] as const;
 export default function Shell({ children }: { children: React.ReactNode }) {
   const p = usePathname(); const [open, setOpen] = useState(false);
   return (<div className="min-h-screen lg:pl-64">
